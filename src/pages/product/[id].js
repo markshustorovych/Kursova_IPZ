@@ -1,5 +1,5 @@
-import ProductDetails from '@components/productDetails';
-import { client } from "@sanity/client.js";
+import ProductDetails from '@/components/product-details';
+import { client } from "@/sanity/client.js";
 
 export async function getServerSideProps(context) {
   const { id } = context.params;

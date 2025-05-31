@@ -7,7 +7,7 @@ import {
   Description,
   BuyButton
 } from './styled';
-import StoreHeader from '@components/storeHeader';
+import StoreHeader from '@/components/store-header';
 
 export default function ProductDetails({ product }) {
   const { title, price, description, imageUrl } = product;

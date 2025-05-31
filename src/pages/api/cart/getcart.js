@@ -1,7 +1,7 @@
-import dbConnect from '@lib/mongoose';
-import User from '@models/user';
-import { getUserFromRequest } from '@lib/auth';
-import { client } from "@sanity/client.js";
+import dbConnect from '@/lib/mongoose';
+import User from '@/models/user';
+import { getUserFromRequest } from '@/lib/auth';
+import { client } from "@/sanity/client.js";
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).end();

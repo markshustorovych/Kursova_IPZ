@@ -1,7 +1,7 @@
-import dbConnect from '@lib/mongoose';
-import User from '@models/user';
+import dbConnect from '@/lib/mongoose';
+import User from '@/models/user';
 import bcrypt from 'bcryptjs';
-import { signToken } from '@lib/auth';
+import { signToken } from '@/lib/auth';
 import * as cookie from 'cookie';
 
 export default async function handler(req, res) {
