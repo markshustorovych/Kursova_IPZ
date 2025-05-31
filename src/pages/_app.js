@@ -1,18 +1,22 @@
-import StoreHeader from "../components/Header";
-import { HomeWrapper } from "../components/HomeWrapper/styled";
-import ProductCard from "../components/ProductCard";
-import ProductList from "../components/productList";
+import { createGlobalStyle } from 'styled-components';
 
-export default function Home() {
+const GlobalStyle = createGlobalStyle`
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
+export default function App({ Component, pageProps }) {
   return (
-    <HomeWrapper>
-      <StoreHeader/>
-      <ProductList>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-      </ProductList>
-    </HomeWrapper>
-  );
+    <>
+      <GlobalStyle/>
+     <Component {...pageProps} />
+    </>
+  )
 }

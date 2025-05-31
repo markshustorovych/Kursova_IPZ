@@ -1,21 +1,18 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import {
-  Card,
-  ProductImage,
-  ProductTitle,
-  ProductPrice,
-  AddButton
+  Wrapper,
+  Image,
+  Title,
+  Price,
+  Description,
+  BuyButton
 } from './styled';
+import StoreHeader from '@components/storeHeader';
 
-export default function ProductCard({ id, title, price, imageUrl }) {
-  const router = useRouter();
+export default function ProductDetails({ product }) {
+  const { title, price, description, imageUrl } = product;
 
-  const handleCardClick = () => {
-    router.push(`/product/${id}`);
-  };
-
-  const handleAddToCart = async (e) => {
+    const handleAddToCart = async (e) => {
     e.stopPropagation();
     try {
       const response = await fetch('/api/cart/addItem', {
@@ -37,11 +34,15 @@ export default function ProductCard({ id, title, price, imageUrl }) {
   };
 
   return (
-    <Card onClick={handleCardClick}>
-      <ProductImage src={imageUrl} alt={title} />
-      <ProductTitle>{title}</ProductTitle>
-      <ProductPrice>${price.toFixed(2)}</ProductPrice>
-      <AddButton onClick={handleAddToCart}>Add to Cart</AddButton>
-    </Card>
+    <>
+      <StoreHeader />
+      <Wrapper>
+        <Image src={imageUrl} alt={title} />
+        <Title>{title}</Title>
+        <Price>${price.toFixed(2)}</Price>
+        <Description>{description}</Description>
+        <BuyButton onClick={handleAddToCart}>Купити</BuyButton>
+      </Wrapper>
+    </>
   );
 }

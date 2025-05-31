@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/componnets*": ["./src/components"]
+      "@components/*": ["./src/components/*"],
+      "@sanity/*": ["./src/sanity/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@models/*": ["./src/models/*"],
+      "@api/*": ["./src/pages/api/*"],
     }
   }
 }
