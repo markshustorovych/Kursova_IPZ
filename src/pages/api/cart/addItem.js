@@ -23,16 +23,13 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Quantity must be a positive number' });
   }
 
-  // Проверяем: есть ли товар в корзине?
   const existingItemIndex = user.cart.findIndex(
     item => item.productId === productId
   );
 
   if (existingItemIndex !== -1) {
-    // Если есть — увеличиваем количество
     user.cart[existingItemIndex].quantity += quantityNum;
   } else {
-    // Если нет — добавляем новый
     user.cart.push({ productId, quantity: quantityNum });
   }
 
