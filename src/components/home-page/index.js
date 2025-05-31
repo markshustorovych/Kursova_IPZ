@@ -1,7 +1,7 @@
-import StoreHeader from '@components/storeHeader';
+import StoreHeader from '@/components/store-header';
 import { HomeWrapper, ProductList } from './styled';
-import ProductCard from '@components/productCard';
-import ProductNavigator from '@components/productNavigator';
+import ProductCard from '@/components/product-card';
+import ProductNavigator from '@/components/product-navigator';
 
 export default function HomePage({ products }) {
   return (

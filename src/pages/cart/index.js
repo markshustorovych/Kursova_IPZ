@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CartPage from "@components/cartPage";
+import CartPage from "@/components/cart-page";
 import { useRouter } from "next/router";
 
 export default function Cart() {

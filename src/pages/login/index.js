@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import LoginPage from "@components/loginPage";
+import LoginPage from "@/components/login-page";
 
 export default function Login() {
   const [email, setEmail] = useState("");

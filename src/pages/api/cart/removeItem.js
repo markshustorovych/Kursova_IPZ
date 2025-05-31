@@ -1,5 +1,5 @@
-import dbConnect from '@lib/mongoose';
-import User from '@models/user';
+import dbConnect from '@/lib/mongoose';
+import User from '@/models/user';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();

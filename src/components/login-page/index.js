@@ -8,7 +8,7 @@ import {
   Button,
   ErrorText,
 } from "./styled";
-import StoreHeader from "@components/storeHeader";
+import StoreHeader from "@/components/store-header";
 
 export default function LoginPage({
   email,

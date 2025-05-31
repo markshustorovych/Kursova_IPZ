@@ -1,5 +1,5 @@
 import React from "react";
-import StoreHeader from "@components/storeHeader";
+import StoreHeader from "@/components/store-header";
 import {
   Container,
   Content,

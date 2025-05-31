@@ -1,6 +1,6 @@
-import clientPromise from '@lib/mongodb';
-import dbConnect from '@lib/mongoose';
-import Order from '@models/order';
+import clientPromise from '@/lib/mongodb';
+import dbConnect from '@/lib/mongoose';
+import Order from '@/models/order';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).end();

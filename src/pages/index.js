@@ -1,5 +1,5 @@
-import HomePage from "@components/homePage";
-import { client } from "@sanity/client.js";
+import HomePage from "@/components/home-page";
+import { client } from "@/sanity/client.js";
 
 const PRODUCTS_QUERY = `*[_type == "product"]{
   _id,

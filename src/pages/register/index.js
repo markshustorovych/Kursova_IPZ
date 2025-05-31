@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import RegisterPage from "@components/registerPage";
+import RegisterPage from "@/components/register-page";
 
 export default function Register() {
   const router = useRouter();
