@@ -66,3 +66,5 @@ export const Button = styled.button`
     background-color: #7dd3fc;
   }
 `;
+
+export const ErrorText = styled.div``
