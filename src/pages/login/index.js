@@ -19,12 +19,14 @@ export default function Login() {
         body: JSON.stringify({ email, password }),
       });
 
-      if (res.ok) {
-        router.push("/");
-      } else {
-        const data = await res.json();
+      const data = await res.json();
+
+      if (!res.ok) {
         setError(data.error || "Something went wrong");
+        return;
       }
+
+      router.push("/");
     } catch {
       setError("Network error");
     }
