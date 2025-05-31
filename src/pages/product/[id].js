@@ -1,4 +1,4 @@
-import ProductDetails from '@components/ProductDetails';
+import ProductDetails from '@components/productDetails';
 import { client } from "@sanity/client.js";
 
 export async function getServerSideProps(context) {
