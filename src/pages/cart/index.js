@@ -20,6 +20,6 @@ export default function Cart() {
   }, []);
 
   return (
-    <CartPage cartItems={cartItems} onCheckout={() => router.push("/order")} />
+    <CartPage cartItems={cartItems} setCartItems={setCartItems} onCheckout={() => router.push("/order")} />
   );
 }

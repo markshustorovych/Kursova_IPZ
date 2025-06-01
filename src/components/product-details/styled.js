@@ -12,6 +12,7 @@ export const Image = styled.img`
   max-width: 600px;
   border-radius: 12px;
   margin-bottom: 1.5rem;
+  object-fit: cover;
 `;
 
 export const Title = styled.h1`
@@ -43,6 +44,8 @@ export const BuyButton = styled.button`
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin: 0 auto;
 
   &:hover {
     background: linear-gradient(135deg, #6ecfee, #a3e1fa);

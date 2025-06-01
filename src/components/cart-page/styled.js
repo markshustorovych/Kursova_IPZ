@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 2rem;
 `;
 
 export const Content = styled.div`
@@ -15,22 +14,6 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
-export const CartItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-`;
-
-export const ItemInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-`;
-
 export const ItemName = styled.span`
   font-size: 1.1rem;
   font-weight: 600;
@@ -41,12 +24,30 @@ export const ItemPrice = styled.span`
   color: #666;
 `;
 
-export const ItemImage = styled.img`
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
+export const CartItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
 `;
+
+export const ItemInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
+
+export const ItemImage = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 1rem;
+`;
+
 
 export const TotalAmount = styled.div`
   font-size: 1.4rem;
@@ -72,5 +73,19 @@ export const Button = styled.button`
     background: linear-gradient(135deg, #6ecfee, #a3e1fa);
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+export const RemoveButton = styled.button`
+  background: none;
+  color: #d9534f;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  margin-top: 0.3rem;
+
+  &:hover {
+    text-decoration: underline;
   }
 `;

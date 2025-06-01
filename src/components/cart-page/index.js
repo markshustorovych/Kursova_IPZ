@@ -11,13 +11,35 @@ import {
   ItemImage,
   Button,
   TotalAmount,
+  RemoveButton,
 } from "./styled";
 
-export default function CartPage({ cartItems, onCheckout }) {
+export default function CartPage({ cartItems, setCartItems, userId, onCheckout }) {
   const totalAmount = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  const handleRemoveFromCart = async (productId) => {
+    try {
+      const response = await fetch('/api/cart/removeItem', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, userId }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+        alert('Product removed from cart.');
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('Failed to remove from cart:', error);
+      alert('An error occurred while removing from cart.');
+    }
+  };
 
   return (
     <Container>
@@ -35,6 +57,9 @@ export default function CartPage({ cartItems, onCheckout }) {
                   <ItemPrice>
                     ${item.price} × {item.quantity}
                   </ItemPrice>
+                  <RemoveButton onClick={() => handleRemoveFromCart(item.id)}>
+                    Remove
+                  </RemoveButton>
                 </ItemInfo>
                 <ItemImage src={item.image} alt={item.name} />
               </CartItem>

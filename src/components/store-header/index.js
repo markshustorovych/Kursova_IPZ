@@ -47,7 +47,9 @@ export default function StoreHeader() {
           src="https://i.pinimg.com/736x/b9/68/ee/b968ee908ef150e3c4b2f82ccaed351f.jpg"
           alt="Logo"
         />
-        <Title>retrodream</Title>
+        <Link href="/" >
+          <Title>retrodream</Title>
+        </Link>
       </LeftSection>
 
       <RightSection>

@@ -14,19 +14,16 @@ if (!cached) {
 
 async function dbConnect() {
   if (cached.conn) {
-    console.log('✅ MongoDB: Используется кэшированное подключение');
     return cached.conn;
   }
 
   if (!cached.promise) {
-    console.log('🔌 MongoDB: Подключение к базе...');
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
     }).then((mongoose) => {
-      console.log('✅ MongoDB: Подключение успешно установлено');
       return mongoose;
     }).catch((err) => {
-      console.error('❌ MongoDB: Ошибка подключения:', err);
+      console.error('❌ MongoDB:', err);
       throw err;
     });
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import StoreHeader from '@/components/store-header';
 import {
   Wrapper,
   Image,
@@ -7,18 +8,18 @@ import {
   Description,
   BuyButton
 } from './styled';
-import StoreHeader from '@/components/store-header';
 
 export default function ProductDetails({ product }) {
-  const { title, price, description, imageUrl } = product;
+  const { _id, id, title, price, description, imageUrl } = product;
+  const productId = id || _id;
 
-    const handleAddToCart = async (e) => {
-    e.stopPropagation();
+  const handleAddToCart = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch('/api/cart/addItem', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId: id, quantity: 1 })
+        body: JSON.stringify({ productId, quantity: 1 })
       });
 
       const data = await response.json();
@@ -41,7 +42,7 @@ export default function ProductDetails({ product }) {
         <Title>{title}</Title>
         <Price>${price.toFixed(2)}</Price>
         <Description>{description}</Description>
-        <BuyButton onClick={handleAddToCart}>Купити</BuyButton>
+        <BuyButton onClick={handleAddToCart}>Buy</BuyButton>
       </Wrapper>
     </>
   );

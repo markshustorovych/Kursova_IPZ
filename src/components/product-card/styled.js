@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
+  width: 400px;
+  height: 500px;
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(12px);
   border-radius: 20px;
@@ -12,6 +14,7 @@ export const Card = styled.div`
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
 
   &:hover {
     transform: translateY(-8px);
@@ -21,8 +24,7 @@ export const Card = styled.div`
 
 export const ProductImage = styled.img`
   width: 100%;
-  max-width: 350px;
-  aspect-ratio: 4 / 3;
+  height: 220px;
   object-fit: cover;
   border-radius: 16px;
   margin-bottom: 1.2rem;

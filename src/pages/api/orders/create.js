@@ -1,26 +1,50 @@
 import dbConnect from '@/lib/mongoose';
-import User from '@/models/user';
 import Order from '@/models/order';
+import { getUserFromRequest } from '@/lib/auth';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   await dbConnect();
 
-  const { userId } = req.body;
-  const user = await User.findById(userId);
+  const userData = getUserFromRequest(req);
+  if (!userData) return res.status(401).json({ message: 'Not authenticated' });
 
-  if (!user || !user.cart.length) {
-    return res.status(400).json({ error: 'Cart is empty or user not found' });
+  const {
+    items,
+    totalPrice,
+    fullName,
+    address,
+    city,
+    postalCode,
+    cardNumber,
+  } = req.body;
+
+  if (
+    !items || !Array.isArray(items) || items.length === 0 ||
+    typeof totalPrice === 'undefined' ||
+    !fullName || !address || !city || !postalCode || !cardNumber
+  ) {
+    return res.status(400).json({ message: 'Missing required fields' });
   }
 
-  const order = await Order.create({
-    userId,
-    items: user.cart,
-  });
+  try {
+    const newOrder = new Order({
+      userId: userData.id,
+      items,
+      totalPrice,
+      fullName,
+      address,
+      city,
+      postalCode,
+      cardNumber,
+    });
 
-  user.cart = [];
-  await user.save();
+    await newOrder.save();
 
-  res.status(201).json({ orderId: order._id });
+    res.status(201).json({ message: 'Order created successfully', orderId: newOrder._id });
+  } catch (error) {
+    console.error('Error creating order:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 }
